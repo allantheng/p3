@@ -1,3 +1,8 @@
+/*
+ * Name: Angelique De Castro
+ * login: ajdecast
+ */
+
 #ifndef HCNODE_HPP
 #define HCNODE_HPP
 

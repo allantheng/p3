@@ -1,3 +1,8 @@
+/*
+ * Name: Angelique De Castro
+ * login: ajdecast
+ */
+
 #ifndef HCTREE_HPP
 #define HCTREE_HPP
 
