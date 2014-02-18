@@ -1,6 +1,10 @@
 /*
  * Name: Angelique De Castro
  * login: ajdecast
+ * 
+ * Filename: HCNode.hpp
+ * Description: This file contains declarations of the huffman compression
+ * tries' nodes.
  */
 
 #ifndef HCNODE_HPP

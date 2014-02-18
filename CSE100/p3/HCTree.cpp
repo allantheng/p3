@@ -14,7 +14,7 @@
      //TODO
     void build(const vector<int>& freqs)
     {
-    	
+      
     }
 
     /** Write to the given BitOutputStream
@@ -25,7 +25,7 @@
     //TODO
     void encode(byte symbol, BitOutputStream& out) const
     {
-    	
+      
     }
 
     /** Return symbol coded in the next sequence of bits from the stream.

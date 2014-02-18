@@ -19,9 +19,11 @@ using namespace std;
  *  For this to work, operator< must be defined to
  *  do the right thing on HCNodes.
  */
-class HCNodePtrComp {
+class HCNodePtrComp
+{
 public:
-    bool operator()(HCNode*& lhs, HCNode*& rhs) const {
+    bool operator()(HCNode*& lhs, HCNode*& rhs) const
+    {
         return *lhs < *rhs;
     }
 };
@@ -30,13 +32,15 @@ public:
  *  Not very generic:  Use only if alphabet consists
  *  of unsigned chars.
  */
-class HCTree {
+class HCTree
+{
 private:
     HCNode* root;
     vector<HCNode*> leaves;
 
 public:
-    explicit HCTree() : root(0) {
+    explicit HCTree() : root(0)
+    {
         leaves = vector<HCNode*>(256, (HCNode*) 0);
     }
 
