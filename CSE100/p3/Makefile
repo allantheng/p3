@@ -13,7 +13,7 @@ uncompress: BitInputStream.o BitOutputStream.o HCNode.o HCTree.o
 HCTree.o: BitInputStream.hpp BitOutputStream.hpp HCNode.hpp HCTree.hpp
 
 HCNode.o: HCNode.hpp
-
+	$(CC) $(CXXFLAGS) -c HCNode.cpp 
 BitOutputStream.o: BitOutputStream.hpp
 
 BitInputStream.o: BitInputStream.hpp

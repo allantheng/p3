@@ -3,7 +3,9 @@
  * login: ajdecast
  */
 
-#include 'HCTree.hpp'
+#include "HCTree.hpp"
+#include "HCNode.hpp"
+#include <cstdio>
 
 /** Use the Huffman algorithm to build a Huffman coding trie.
      *  PRECONDITION: freqs is a vector of ints, such that freqs[i] is 
@@ -12,9 +14,10 @@
      *  and leaves[i] points to the leaf node containing byte i.
      */
      //TODO
-    void build(const vector<int>& freqs)
+    void HCTree::build(const vector<int>& freqs)
     {
-      
+      root = nullptr; // root of trie is null
+
     }
 
     /** Write to the given BitOutputStream
@@ -23,7 +26,7 @@
      *  tree, and initialize root pointer and leaves vector.
      */
     //TODO
-    void encode(byte symbol, BitOutputStream& out) const
+    void HCTree::encode(byte symbol, BitOutputStream& out) const
     {
       
     }
@@ -33,7 +36,7 @@
      *  tree, and initialize root pointer and leaves vector.
      */
     //TODO
-    int decode(BitInputStream& in) const
+    int HCTree::decode(BitInputStream& in) const
     {
-    	
+      
     }

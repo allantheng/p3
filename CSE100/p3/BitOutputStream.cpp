@@ -27,8 +27,8 @@
   /** Send the buffer to the output, and clear it */
   void BitOutputStream::flush()
   {
-    os.put(buf);
-    os.flush();
+    out.put(buf);
+    out.flush();
     buf = nbits = 0;
   }
   
@@ -41,9 +41,10 @@
   {
     char c;
     if( bit == 1 )
-      c = b | (bit << n-1);
+      c = b | (bit << (n-1));
     else
-      c = b & ~(1 << n-1);
+      c = b & ~(1 << (n-1));
+    return c;
   }
   
   /** Write the least significant bit of the argument to

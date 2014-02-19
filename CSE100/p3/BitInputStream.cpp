@@ -36,7 +36,7 @@
    */
   char BitInputStream::bitVal(char b, int n)
   {
-    char c = b & (1 << n-1);
+    char c = b & (1 << (n-1));
     return c;
   }
   

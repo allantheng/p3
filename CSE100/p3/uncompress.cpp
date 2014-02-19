@@ -3,9 +3,10 @@
  * login: ajdecast
  */
 
-#include 'BitInputStream.hpp'
-#include 'BitOutputStream.hpp'
+#include "BitInputStream.hpp"
+#include "BitOutputStream.hpp"
 #include <iostream>
+#include <cstdio>
 
 using namespace std;
 

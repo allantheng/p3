@@ -3,9 +3,11 @@
  * login: ajdecast
  */
 
-#include 'BitInputStream.hpp'
-#include 'BitOutputStream.hpp'
+#include "BitInputStream.hpp"
+#include "BitOutputStream.hpp"
 #include <iostream>
+#include <cstdio>
+#include <vector>
 
 using namespace std;
 
@@ -49,8 +51,10 @@ int main(int argc, char** argv)
     fputs("EOF error", stderr); // TODO see if error should be thrown for EOF and return??
   
   cout << "done." << endl;
+
+  // 
   
-  cout << "Found " << /*number*/ << 
+  cout << "Found " << /*number*/"3" << 
   " unique symbols in the input file of size " << lsize << " bytes." << endl;
   
   
