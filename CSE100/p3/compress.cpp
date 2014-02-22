@@ -35,7 +35,7 @@ int main(int argc, char** argv)
    */
   
   FILE *datfile; // pointer to file
-  char *ptr; // pointer for fopen 
+  char *ptr = nullptr; // pointer for fopen 
   size_t result;
   long lsize;
   
@@ -45,9 +45,12 @@ int main(int argc, char** argv)
   
   lsize = ftell(datfile); // get size of the file
   
+  if( lsize < 0)
+    exit(1); //TODO errno stuff
+  
   result = fread( ptr, 1, lsize, datfile); // save result to compare to lsize
   
-  if( result != lsize )
+  if( result != (unsigned long)lsize )
     fputs("EOF error", stderr); // TODO see if error should be thrown for EOF and return??
   
   cout << "done." << endl;
