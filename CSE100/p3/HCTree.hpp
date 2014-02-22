@@ -44,6 +44,33 @@ public:
         leaves = vector<HCNode*>(256, (HCNode*) 0);
     }
 
+    // Constructor for joining two trees
+    explicit HCTree(HCNode* node1, HCNode* node2)
+      : root( new HCNode(node1->count+node2->count, 0,
+         node1, node2, 0, NOT_SET))
+    {
+      leaves = vector<HCNode*>(256, (HCNode*) 0); // create new leaves vector
+
+      HCNode* upCurr; // HCNode* for upwards traversal for setting isChild0
+
+      //Traversing all nodes to add to leaves vector and set isChild0 field
+      for( HCNode* curr = root; curr!=nullptr; curr=curr->successor() )
+      {
+        leaves[curr->symbol] = curr;
+        upCurr = curr;
+
+        //While upCurr has a parent and upCurr has not yet been set
+        while( (upCurr->p!=nullptr)&&(upCurr->isChild0==NOT_SET) )
+        {
+          if( upCurr->p->c0 == upCurr )
+            upCurr->isChild0 = true;
+          else
+            upCurr->isChild0 = false;
+        }
+      }
+    }
+
+
     ~HCTree();
 
     /** Use the Huffman algorithm to build a Huffman coding trie.
