@@ -15,5 +15,5 @@
    */
 bool HCNode::operator<(const HCNode & other)
 {
-  
+  return this->count < other.count; // compare frequencies
 }
