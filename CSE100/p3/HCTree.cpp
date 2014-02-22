@@ -6,6 +6,10 @@
 #include "HCTree.hpp"
 #include "HCNode.hpp"
 #include <cstdio>
+#include <queue>
+#include <vector>
+
+using namespace std;
 
 /** Use the Huffman algorithm to build a Huffman coding trie.
      *  PRECONDITION: freqs is a vector of ints, such that freqs[i] is 
@@ -16,8 +20,13 @@
      //TODO
     void HCTree::build(const vector<int>& freqs)
     {
-      root = nullptr; // root of trie is null
-
+      priority_queue<HCNode*> btq;
+      
+      //Populate priority queue with nodes
+      for(int i = 0; i < (int)freqs.size(); ++i)
+      {
+         btq.push( new HCNode( freqs[i], i, 0, 0, 0, NOT_SET) );
+      }
     }
 
     /** Write to the given BitOutputStream
@@ -38,5 +47,5 @@
     //TODO
     int HCTree::decode(BitInputStream& in) const
     {
-      
+      return 0; //TODO
     }
