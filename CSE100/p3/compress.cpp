@@ -1,13 +1,17 @@
 /*
- * Name: Angelique De Castro
- * login: ajdecast
+ * Name: Angelique De Castro, Robert Massingill
+ * login: ajdecast, rmassing
  */
 
 #include "BitInputStream.hpp"
 #include "BitOutputStream.hpp"
+#include "HCTree.hpp"
+#include "HCNode.hpp"
 #include <iostream>
 #include <cstdio>
 #include <vector>
+#include <stdio.h>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -34,32 +38,37 @@ int main(int argc, char** argv)
    * Close the input and output files.
    */
   
-  FILE *datfile; // pointer to file
-  char *ptr = nullptr; // pointer for fopen 
-  size_t result;
+  HCTree tree = HCTree(); // init new tree to build
+  FILE *datfile;
   long lsize;
-  
+  char *buffer;
+
   cout << "reading from file \"" << argv[1] << "\"... ";
-  
-  datfile = fopen( argv[1], "r" ); // open input file for reading
-  
-  lsize = ftell(datfile); // get size of the file
-  
-  if( lsize < 0)
-    exit(1); //TODO errno stuff
-  
-  result = fread( ptr, 1, lsize, datfile); // save result to compare to lsize
-  
-  if( result != (unsigned long)lsize )
-    fputs("EOF error", stderr); // TODO see if error should be thrown for EOF and return??
-  
+
+  ifstream is(argv[1]); // open files for reading (2 ways for useful methods)
+  datfile = fopen(argv[1], "r");
+
+  // obtain file size
+  fseek(datfile, 0, SEEK_END);
+  lsize = ftell(datfile);
+  rewind(datfile);
+
+  // allocate memory to contain the whole file
+  buffer = (char*)malloc(sizeof(char)*lsize);
+  if(buffer == NULL) {cerr << "Error opening \"0\"" << endl; return -1;} 
+
+  // copy file into buffer
+  fread(buffer, 1, lsize, datfile);
+
+  vector<int> frequency = vector<int>(256, 0); // create vector of char freqs
+
+  while(is.good()) // loop while extraction from files is possible
+    frequency[is.get()] += 1; // go to corresponding index and inc count
+
   cout << "done." << endl;
 
-  // 
-  
-  cout << "Found " << /*number*/"3" << 
-  " unique symbols in the input file of size " << lsize << " bytes." << endl;
-  
-  
-  fclose( datfile );
+  tree.build(frequency);
+
+  cout << "Found " << is.gcount() << 
+  " unique symbols in the input file of size " << lsize  << " bytes." << endl;
 }

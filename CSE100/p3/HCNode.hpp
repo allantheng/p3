@@ -29,20 +29,26 @@ public:
   HCNode* c0;    // pointer to '0' child
   HCNode* c1;    // pointer to '1' child
   HCNode* p;     // pointer to parent
-  byte isChild0; // boolean if it is 0 child
+  bool isChild0; // boolean if it is 0 child
 
   HCNode(int count,
    byte symbol,
    HCNode* c0 = 0,
    HCNode* c1 = 0,
    HCNode* p = 0,
-   byte isChild0 = NOT_SET)
+   byte isChild0 = false)
     : count(count), symbol(symbol), c0(c0), c1(c1), p(p), isChild0(isChild0) { }
 
   // Constructor for making new root node to join two roots of subtrees
   HCNode( HCNode* node1, HCNode* node2)
     : count(node1->count+node2->count), symbol(0), c0(node1), c1(node2), 
-    p(nullptr), isChild0(NOT_SET) { }
+    p(nullptr), isChild0(false) 
+  {
+    //Set child pointers and fields
+    c0->p = this;
+    c0->isChild0 = true;
+    c1->p = this;
+  }
 
   /** Less-than comparison, so HCNodes will work in std::priority_queue
    *  We want small counts to have high priority.

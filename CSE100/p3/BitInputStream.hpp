@@ -28,6 +28,8 @@ public:
   char bitVal(char b, int n);
 
   int readBit();
+
+  int readByte();
 };
 
 #endif // BITINPUTSTREAM_HPP

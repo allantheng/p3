@@ -13,6 +13,7 @@
 #include <iostream>
 #include <bitset>
 
+using namespace std;
   /** Initialize a BitInputStream that will use
   * the given istream for input.
   */
@@ -59,4 +60,21 @@
     
     // return bit value
     return v;
+  }
+
+  /** Read the next byte from the bit buffer.
+  * Fill the buffer from the input stream first if needed.
+  * Return 1 if the bit read is 1;
+  * return 0 if the bit read is 0.
+  */
+  int BitInputStream::readByte()
+  {
+    // If all bits in the buffer are read, fill the buffer first
+    if( nbits == 0 )
+      return in.get();
+    else
+    {
+      cerr << "Cannot call readByte after calling readBit" << endl;
+      exit(-1);
+    }
   }
